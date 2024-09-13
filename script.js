@@ -1,14 +1,11 @@
-// Array zum Speichern der Zeilen-Daten
 let rowsData = JSON.parse(localStorage.getItem("rowsData")) || [];
 
-// Funktion zum Speichern der Daten in localStorage
 function saveToLocalStorage() {
   localStorage.setItem("rowsData", JSON.stringify(rowsData));
 }
 
-// Funktion zum Hinzufügen einer neuen Zeile
 function addRow() {
-  let tableBody = document.querySelector("#myTable tbody"); // Hinzufügen von 'tbody'
+  let tableBody = document.querySelector("#myTable tbody");
   let row = tableBody.insertRow();
 
   let cell0 = row.insertCell(0);
@@ -34,7 +31,6 @@ function addRow() {
   cell1.textContent = dekor;
   cell2.textContent = menge;
 
-  // Speichern der Zeile in rowsData inkl. input3 und input4
   rowsData.push({
     länge,
     dekor,
@@ -43,9 +39,8 @@ function addRow() {
     input4: input4.value,
   });
 
-  saveToLocalStorage(); // Speichert das Array in localStorage
+  saveToLocalStorage();
 
-  // Synchronisiere Änderungen in den input-Feldern mit rowsData
   input3.addEventListener("input", function () {
     let rowIndex = row.rowIndex - 1;
     rowsData[rowIndex].input3 = input3.value;
@@ -65,18 +60,16 @@ function addRow() {
     let rowIndex = row.rowIndex - 1;
     tableBody.deleteRow(row.rowIndex);
     rowsData.splice(rowIndex, 1);
-    saveToLocalStorage(); // Aktualisiere localStorage nach dem Löschen
+    saveToLocalStorage();
   };
 
   cell5.appendChild(deleteButton);
 
-  // Leere die Eingabefelder
   document.getElementById("länge").value = "";
   document.getElementById("dekor").value = "";
   document.getElementById("menge").value = "";
 }
 
-// Funktion zum Laden der Daten beim Start
 function loadRows() {
   let tableBody = document.querySelector("#myTable tbody");
   rowsData.forEach((data) => {
@@ -103,7 +96,6 @@ function loadRows() {
     input4.value = data.input4;
     cell4.appendChild(input4);
 
-    // Synchronisiere Änderungen in den input-Feldern mit rowsData
     input3.addEventListener("input", function () {
       let rowIndex = row.rowIndex - 1;
       rowsData[rowIndex].input3 = input3.value;
@@ -130,12 +122,10 @@ function loadRows() {
   });
 }
 
-// Funktion, um die Enter-Taste zu überwachen und addRow auszulösen
-document.addEventListener("keydown", function(event) {
+document.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     addRow();
   }
 });
 
-// Lade die gespeicherten Daten, wenn die Seite geladen wird
 window.onload = loadRows;
