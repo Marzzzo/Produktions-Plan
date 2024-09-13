@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./image/icon.png">
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./responsive.css">
+    <title>Produktionsplan</title>
+</head>
+
+<body>
+    <div class="max-content">
+        <div class="container-top">
+            <h1>Produktionsplan</h1>
+            <img class="icon" src="./image/icon.png" alt="">
+        </div>
+
+
+        <main>
+            <table class="table-background-color" id="myTable" border="8">
+                <tr>
+                    <th>Länge</th>
+                    <th>Dekor</th>
+                    <th>Stückzahl</th>
+                    <th>Ausschuss 1</th>
+                    <th>Ausschuss 2</th>
+                </tr>
+            </table>
+        </main>
+
+
+        <section class="inputfield">
+            <label for="länge">Länge:</label>
+            <input class="secondInput" type="text" id="länge" name="länge">
+            <label for="dekor">Dekor:</label>
+            <input class="secondInput" type="text" id="dekor" name="dekor">
+            <label for="menge">Stückzahl:</label>
+            <input class="secondInput" type="number" id="menge" name="menge">
+            <button class="addbutton" onclick="addRow()">hinzufügen</button>
+        </section>
+
+    </div>
+</body>
+
+</html>

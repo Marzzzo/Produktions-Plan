@@ -1,0 +1,48 @@
+@media (max-width: 1800px) {
+    .max-content {
+        max-width: 1400px;
+    }
+
+    input {
+        width: 200px;
+    }
+}
+
+@media (max-width: 1450px) {
+    .max-content {
+        max-width: 1200px;
+    }
+
+    label {
+        font-size: 24px;
+        color: rgb(255 118 0);
+    }
+
+    th, td {
+        font-size: 24px;
+        height: 30px;
+    }
+
+    input {
+        height: 30px;
+        width: 150px;
+    }
+
+    button {
+        width: 100px;
+        height: 24px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1240px) {
+    .max-content {
+        max-width: 800px;
+    }
+
+    .inputfield {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
