@@ -19,7 +19,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 200px;
-    gap: 30px;
+    gap: 100px;
 }
 
 .icon {
@@ -130,4 +130,10 @@ label {
 .max-content {
     width: 100%;
     max-width: 1800px;
+}
+
+.clock {
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
 }

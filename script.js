@@ -128,4 +128,55 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
+async function fetchTime() {
+  try {
+    const response = await fetch(
+      "https://worldtimeapi.org/api/timezone/Europe/Berlin"
+    );
+    if (!response.ok) throw new Error("Keine gültige Antwort von der API");
+
+    const data = await response.json();
+    const dateTime = new Date(data.datetime);
+    const offset = data.utc_offset;
+
+    let hours = dateTime.getUTCHours();
+    let minutes = dateTime.getUTCMinutes();
+    let seconds = dateTime.getUTCSeconds();
+
+    const offsetSign = offset[0] === "+" ? 1 : -1;
+    const offsetHours = parseInt(offset.slice(1, 3), 10);
+    const offsetMinutes = parseInt(offset.slice(4, 6), 10);
+
+    hours = (hours + offsetSign * offsetHours) % 24;
+    minutes = (minutes + offsetSign * offsetMinutes) % 60;
+
+    const formattedTime = `${hours.toString().padStart(2, "0")}:${minutes
+      .toString()
+      .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+    document.getElementById("clock").textContent = formattedTime;
+  } catch (error) {
+    console.warn(
+      "Fehler beim Abrufen der Zeit von der API. Fallback auf lokale Zeit:",
+      error
+    );
+    updateLocalTime();
+  }
+}
+
+function updateLocalTime() {
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, "0");
+  const minutes = now.getMinutes().toString().padStart(2, "0");
+  const seconds = now.getSeconds().toString().padStart(2, "0");
+  document.getElementById(
+    "clock"
+  ).textContent = `${hours}:${minutes}:${seconds}`;
+}
+
+setInterval(fetchTime, 60000);
+
+fetchTime();
+
+setInterval(updateLocalTime, 1000);
+
 window.onload = loadRows;
