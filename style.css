@@ -134,6 +134,9 @@ label {
 
 .clock {
     color: white;
-    font-size: 40px;
+    font-size: 45px;
     font-weight: bold;
+    position: absolute;
+    top: 74px;
+    left: 180px;
 }
