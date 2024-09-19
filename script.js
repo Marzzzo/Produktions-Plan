@@ -173,7 +173,7 @@ function updateLocalTime() {
   ).textContent = `${hours}:${minutes}:${seconds}`;
 }
 
-setInterval(fetchTime, 60000);
+setInterval(fetchTime, 10000);
 
 fetchTime();
 

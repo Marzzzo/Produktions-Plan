@@ -132,8 +132,8 @@ label {
 }
 
 .clock {
-    color: white;
-    font-size: 50px;
+    color: rgb(0, 140, 255);
+    font-size: 60px;
     font-weight: bold;
     width:205px;
 }
